@@ -1,0 +1,5 @@
+streamlit
+gdown
+numpy
+scikit-learn
+sqlite3-binary
