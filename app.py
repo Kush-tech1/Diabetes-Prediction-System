@@ -2,23 +2,23 @@ import numpy as np
 import pickle
 import streamlit as st
 import sqlite3
-import gdown
 import os
 
 # Define model path and Drive file ID
 model_path = "trained_model_rf_new.sav"
-file_id = "12GFKVNosy6jB-_FBI-UAPOkvGVjzhhRV"  # Replace with your actual file ID
-url = f"https://drive.google.com/uc?id=12GFKVNosy6jB-_FBI-UAPOkvGVjzhhRV"
-# Download model if it doesn't exist
-if not os.path.exists(model_path):
-    try:
-        gdown.download(url, model_path, quiet=False)
-    except Exception as e:
-        st.error("❌ Failed to download model. Check the Google Drive file permissions or ID.")
-        st.stop()
-# Load the saved model
-loaded_model = pickle.load(open('trained_model_rf_new.sav', 'rb'))
+hf_url =  = "https://huggingface.co/kush246/Diabetes_prediction_rfc/resolve/main/trained_model_rf_new.sav"  
 
+if not os.path.exists(model_path):
+    with requests.get(hf_url, stream=True) as r:
+        r.raise_for_status()
+        with open(model_path, 'wb') as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
+                
+# Load the saved model
+with open(model_path, 'rb') as f:
+    loaded_model = pickle.load(f)
+    
 # Prediction function
 def diabetes_prediction(input_data):
     input_data_as_numpy_array = np.asarray(input_data)
