@@ -3,7 +3,7 @@ import pickle
 import streamlit as st
 import sqlite3
 import os
-
+import requests
 # Define model path and Drive file ID
 model_path = "trained_model_rf_new.sav"
 hf_url = "https://huggingface.co/kush246/Diabetes_prediction_rfc/resolve/main/trained_model_rf_new.sav"  
