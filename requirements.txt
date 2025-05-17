@@ -1,4 +1,4 @@
 streamlit
-gdown
+requests
 numpy
 scikit-learn
