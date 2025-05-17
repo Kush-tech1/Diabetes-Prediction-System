@@ -6,7 +6,7 @@ import os
 
 # Define model path and Drive file ID
 model_path = "trained_model_rf_new.sav"
-hf_url =  = "https://huggingface.co/kush246/Diabetes_prediction_rfc/resolve/main/trained_model_rf_new.sav"  
+hf_url = "https://huggingface.co/kush246/Diabetes_prediction_rfc/resolve/main/trained_model_rf_new.sav"  
 
 if not os.path.exists(model_path):
     with requests.get(hf_url, stream=True) as r:
