@@ -8,8 +8,7 @@ import os
 # Define model path and Drive file ID
 model_path = "trained_model_rf_new.sav"
 file_id = "12GFKVNosy6jB-_FBI-UAPOkvGVjzhhRV"  # Replace with your actual file ID
-url = f"https://drive.google.com/file/d/12GFKVNosy6jB-_FBI-UAPOkvGVjzhhRV/view?usp=drivesdk"
-
+url = f"https://drive.google.com/file/d/12GFKVNosy6jB-_FBI-UAPOkvGVjzhhRV"
 # Download model if it doesn't exist
 if not os.path.exists(model_path):
     gdown.download(url, model_path, quiet=False)
