@@ -11,9 +11,11 @@ file_id = "12GFKVNosy6jB-_FBI-UAPOkvGVjzhhRV"  # Replace with your actual file I
 url = f"https://drive.google.com/uc?id=12GFKVNosy6jB-_FBI-UAPOkvGVjzhhRV"
 # Download model if it doesn't exist
 if not os.path.exists(model_path):
-    gdown.download(url, model_path, quiet=False)
-
-
+    try:
+        gdown.download(url, model_path, quiet=False)
+    except Exception as e:
+        st.error("❌ Failed to download model. Check the Google Drive file permissions or ID.")
+        st.stop()
 # Load the saved model
 loaded_model = pickle.load(open('trained_model_rf_new.sav', 'rb'))
 
